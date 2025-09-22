@@ -44,25 +44,6 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "remote_politica",
-      filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {
-        "./MiComponentePolitica": "./src/MiCompPolitica.js",
-      },
-      shared: {
-        ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-      },
-    }),
-    new ModuleFederationPlugin({
       name: "remote_economia",
       filename: "remoteEntry.js",
       remotes: {},
