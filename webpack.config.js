@@ -62,6 +62,25 @@ module.exports = (_, argv) => ({
         },
       },
     }),
+    new ModuleFederationPlugin({
+      name: "remote_economia",
+      filename: "remoteEntry.js",
+      remotes: {},
+      exposes: {
+        "./EcoComponent": "./src/EcoComponent.js",
+      },
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
+    }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
